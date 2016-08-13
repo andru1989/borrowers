@@ -1,0 +1,8 @@
+<div class="col-8 px2 mx-auto p1 h2 center">
+  <p class=''>{{model.firstName}}</p>
+  <p class=''>{{model.lastName}}</p>
+  <p class=''>{{model.email}}</p>
+  <p class=''>{{model.twitter}}</p>
+  <p class=''>{{link-to 'Edit info' 'friends.edit' model}}</p>
+  <p class=''><a href="#" {{action 'delete' model}}>Delete</a></p>
+</div>
