@@ -1,20 +1,30 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  isValid: Ember.computed(
-    'model.email',
-    'model.firstName',
-    'model.lastName',
-    'model.twitter',
-    {
-      get() {
-        return !Ember.isEmpty(this.get('model.email')) &&
-          !Ember.isEmpty(this.get('model.firstName')) &&
-          !Ember.isEmpty(this.get('model.lastName')) &&
-          !Ember.isEmpty(this.get('model.twitter'));
-      }
-    }
+  hasEmail:       Ember.computed.notEmpty('model.email'),
+  hasFirstName:   Ember.computed.notEmpty('model.firstName'),
+  hasLastName:    Ember.computed.notEmpty('model.lastName'),
+  hasTwitter:     Ember.computed.notEmpty('model.twitter'),
+  isValid:        Ember.computed.and(
+    'hasEmail',
+    'hasFirstName',
+    'hasLastName',
+    'hasTwitter'
   ),
+  //isValid: Ember.computed(
+  //  'model.email',
+  //  'model.firstName',
+  //  'model.lastName',
+  //  'model.twitter',
+  //  {
+  //    get() {
+  //      return !Ember.isEmpty(this.get('model.email')) &&
+  //        !Ember.isEmpty(this.get('model.firstName')) &&
+  //        !Ember.isEmpty(this.get('model.lastName')) &&
+  //        !Ember.isEmpty(this.get('model.twitter'));
+  //    }
+  //  }
+  //),
   actions: {
     save(){
       console.log('save action in edit-form component');
@@ -26,7 +36,7 @@ export default Ember.Component.extend({
           // We are calling the save action passed down when rendering the // component: action=(action "save")
           //
           return this.save(friend);
-        }, (err) => {
+        }, () => {
           //
           // This gets called if the HTTP request fails.
           //
