@@ -12,4 +12,3 @@ export default Ember.Component.extend({
     console.log('OMG Expensive operation because loan state changed');
   })
 });
-

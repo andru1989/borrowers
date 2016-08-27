@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    host: 'https://api.ember-101.com',
     modulePrefix: 'borrowers',
     environment: environment,
     rootURL: '/',
@@ -18,6 +19,12 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+
+  if (environment === 'development') {
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
+  }
 
   if (environment === 'development') {
     ENV.APP.LOG_RESOLVER = true;

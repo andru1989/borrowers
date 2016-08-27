@@ -10,7 +10,7 @@ export default Model.extend({
   email: attr('string'),
   twitter: attr('string'),
   loans: hasMany('loan'),
-  /*fullName: Ember.computed('firstName', 'lastName', {
+  fullName: Ember.computed('firstName', 'lastName', {
     get() {
       return this.get('firstName') + ' ' + this.get('lastName');
     },
@@ -22,7 +22,7 @@ export default Model.extend({
 
       return value;
     }
-  })*/
+  }),
   capitalizedFirstName: changeGate('firstName', function(firstName) {
     return Ember.String.capitalize(firstName);
   })
